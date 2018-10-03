@@ -1,0 +1,12 @@
+.vscode/
+__pycache__
+.bsb.lock
+.merlin
+.cache
+npm-debug.log
+lib/
+*.sqlite3
+node_modules/
+.graphql_ppx_cache/
+backend/config/
+Config.re
