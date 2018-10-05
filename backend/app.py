@@ -11,7 +11,7 @@ from server.schema import schema
 from server.graphql_view import View
 from server.models import init_db
 
-# init_db()
+init_db()
 
 app.add_url_rule('/api', view_func=View.as_view('graphql',
                                                 schema=schema, graphiql=True))
