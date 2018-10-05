@@ -1,4 +1,4 @@
-This is an incredibly brutalist Todo app that I put together as research into a possible tech stack for a consulting project. The project didn't pan out, but what I did might be informative anyway, so here it is!
+This is an incredibly brutalist Todo app that I put together as research into a possible tech stack for a consulting project. The project didn't pan out, but what I did might be informative anyway so here it is!
 
 On the backend it uses Python, Flask, SQLAlchemy, and GraphQL via Graphene and on the frontend it's ReasonML, React, and GraphQL via ApolloClient.
 
