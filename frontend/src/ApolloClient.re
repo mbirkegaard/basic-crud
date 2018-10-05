@@ -1,6 +1,6 @@
 let inMemoryCache = ApolloInMemoryCache.createInMemoryCache(());
 
-let httpLink = ApolloLinks.createHttpLink(~uri=Config.api, ());
+let httpLink = ApolloLinks.createHttpLink(~uri=Config.activeConfig.api, ());
 
 let authLink = ApolloLinks.createContextLink(() => {
   let authorization = switch Dom.Storage.(getItem("accessToken", localStorage)) {

@@ -44,16 +44,19 @@ type jsCallback('a) = Js.null(err) => Js.null('a) => unit;
 [@bs.send] external _parseHash : auth0Client => parseHashOption => jsCallback(authResult) => unit = "parseHash";
 [@bs.scope "client"] [@bs.send] external _userInfo : auth0Client => string => jsCallback(userInfoResult) => unit = "userInfo";
 
-open Location;
 let redirectUri = () => {
-  let portSuffix = (port == "") ? "" : {j|:$port|j};
+  open Location;
+  let portSuffix = (port != "") ? {j|:$port|j} : "";
   {j|$protocol//$hostname$portSuffix/callback|j}
 };
 
+open Config;
+let { domain, clientID, audience } = Config.activeConfig.auth0;
+
 let clientOptions = clientOptions(
-  ~domain=Config.Auth0.domain,
-  ~clientID=Config.Auth0.clientID,
-  ~audience=Config.Auth0.audience,
+  ~domain=domain,
+  ~clientID=clientID,
+  ~audience=audience,
   ~responseType="token id_token",
   ~scope="openid email profile",
   ~redirectUri=redirectUri()

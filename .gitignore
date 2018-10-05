@@ -8,5 +8,5 @@ lib/
 *.sqlite3
 node_modules/
 .graphql_ppx_cache/
-backend/config/
+dev_config.py
 Config.re

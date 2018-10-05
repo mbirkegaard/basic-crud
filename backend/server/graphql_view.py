@@ -11,7 +11,7 @@ class View(GraphQLView):
                 'auth': auth
             }
         except AuthError as exception:
-            if current_app.config['ALLOW_NO_AUTH_SESSION']:
+            if current_app.config.get('ALLOW_NO_AUTH_SESSION', False):
                 return {
                     'auth': None
                 }
