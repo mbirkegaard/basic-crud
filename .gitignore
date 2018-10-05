@@ -10,3 +10,4 @@ node_modules/
 .graphql_ppx_cache/
 dev_config.py
 Config.re
+graphql_schema.json
