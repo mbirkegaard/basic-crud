@@ -38,6 +38,6 @@ let activeConfig = devConfig;
 
 To run the backend, you need [pipenv](https://pypi.org/project/pipenv/). Install it, navigate to `/backend` and run `pipenv --three` followed by `pipenv install`. To launch the Flask development server, run `./startDevelopmentServer.sh`. It serves a GraphQL-endpoint at `/api`. If you want to use GraphiQL without having to have a session, set `ALLOW_NO_AUTH_SESSION = True` in the config-file. 
 
-To run the frontend, do `npm install` or `yarn` in `/frontend`. 
+To run the frontend, install dependencies by with `npm install` or `yarn` in `/frontend`. Before you can compile the Reason files to Javascript, you need to run the introspection query with `./node_modules/.bin/send-introspection-query http://localhost:5000/api` or `yarn send-introspection-query http://localhost:5000/api`. This performs a query against the GraphQL-endpoint to get names and types of all fields, queries and mutations, saving them in `graphql_schema.json`. With this file present, these setup doesn't just give you typechecking of the Reason-code you write, but also of all your API-calls! 
 
-`./node_modules/.bin/send-introspection-query http://localhost:5000/api`
+To compile the frontend do `npm run reason:dev` (or `yarn reason:dev`) and run `npm run webpack:dev` (or `yarn webpack:dev`) to serve it at `http://localhost:3000`.
