@@ -9,8 +9,6 @@ class Todo(SQLAlchemyObjectType):
         model = models.Todo
         exclude_fields = ("project_id", )
 
-    name = NonNull(String)
-    finished = NonNull(Boolean)
     project = NonNull(lambda: Project)
 
     @staticmethod
