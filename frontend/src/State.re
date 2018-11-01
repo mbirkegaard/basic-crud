@@ -1,6 +1,6 @@
 type user = {
   session: Auth0.session,
-  username: string
+  username: string,
 };
 
 type state = {
