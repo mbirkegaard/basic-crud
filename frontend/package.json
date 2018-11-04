@@ -7,7 +7,8 @@
     "reason:clean": "bsb -clean-world",
     "webpack:dev": "webpack-dev-server",
     "webpack:build": "NODE_ENV=production webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fmt": "refmt --in-place **/*.re"
   },
   "author": "Mikkel Birkegaard Andersen (mbirkegaard)",
   "dependencies": {
