@@ -7,12 +7,11 @@ module AddTodoForm = {
       <Queries.AddTodoMutation>
       ...(
       (mutate, { result }) => {
-        let resultFromResponse = response => Queries.AddTodoMutation.convertJsInputToReason(response).result;
         let fireMutation = (text) => {
           let mutation = Queries.AddTodo.make(~projectId=projectId, ~todoName=text, ());
           mutate(~variables=mutation##variables, ~refetchQueries=[|"getAllProjects"|], ());
         };
-        <MutationForm fireMutation result resultFromResponse placeholderText="Todo name" buttonText="Add Todo"/>
+        <MutationForm fireMutation result placeholderText="Todo name" buttonText="Add Todo"/>
       })
       </Queries.AddTodoMutation>
     }

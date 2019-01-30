@@ -64,13 +64,12 @@ module NewProjectForm = {
       <Queries.AddProjectMutation>
       ...(
       (mutate, { result }) => {
-        let resultFromResponse = response => Queries.AddProjectMutation.convertJsInputToReason(response).result;
         let fireMutation = (text) => {
           let mutation = Queries.AddProject.make(~name=text, ());
           mutate(~variables=mutation##variables, ~refetchQueries=[|"getAllProjects"|], ());
         };
 
-        <MutationForm fireMutation result resultFromResponse placeholderText="Project name" buttonText="Add Project"/>
+        <MutationForm fireMutation result placeholderText="Project name" buttonText="Add Project"/>
       })
       </Queries.AddProjectMutation>
     }

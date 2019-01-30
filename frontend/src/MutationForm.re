@@ -11,7 +11,6 @@ let component = ReasonReact.reducerComponent("MutationForm");
 let make = (
     ~fireMutation: string => Js.Promise.t('a), 
     ~result: ReasonApolloTypes.mutationResponse('b), 
-    ~resultFromResponse: ('a) => ReasonApolloTypes.mutationResponse('b), 
     ~placeholderText, 
     ~buttonText, 
     _children) => {
@@ -27,11 +26,10 @@ let make = (
   render: self => {
     let handleMutation = () => {
       fireMutation(self.state.text)
-      |> Js.Promise.then_(response => {
-        let result = resultFromResponse(response);
-        switch result {
+      |> Js.Promise.then_((response: ReasonApolloTypes.executionResponse('b)) => {
+        switch response {
           | Data(_) => UpdateText("") |> self.send
-          | Error(err) => Js.log2("Error", err)
+          | Errors(err) => Js.log2("Error", err)
           | _ => ()
         };
         Js.Promise.resolve(response)
@@ -52,7 +50,7 @@ let make = (
       (ReasonReact.string(buttonText))
     </button>
     (switch result {
-      | Error(e) => ReasonReact.string(e##message)
+      | Error(e) => e##message |> ReasonReact.string
       | _ => ReasonReact.null 
     })
     
